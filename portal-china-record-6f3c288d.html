@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 中国站 · 专题介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f1f2f4;
+      font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+      line-height: 1.6;
+      color: #1e2a3a;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* --- hero 横幅 --- */
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #eef2f7 100%);
+      border-radius: 28px;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.06);
+      padding: 3.2rem 2.5rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(0,0,0,0.02);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 2rem;
+      top: 1.5rem;
+      width: 120px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, rgba(200, 160, 60, 0.10) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 550;
+      letter-spacing: 0.02em;
+      color: #0b1e2f;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .sub {
+      font-size: 1.2rem;
+      color: #405b73;
+      border-left: 4px solid #b7c9d9;
+      padding-left: 1rem;
+      margin-top: 0.3rem;
+    }
+
+    /* --- 卡片通用 --- */
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02), 0 2px 0 0 rgba(0,0,0,0.02);
+      border: 1px solid #e6eaef;
+      padding: 2.2rem 2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.12s;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 20px -6px rgba(0,0,0,0.04);
+    }
+
+    .card h2 {
+      font-size: 1.6rem;
+      font-weight: 520;
+      color: #142635;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #eef2f7;
+      padding-bottom: 0.6rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1d3a4e;
+      margin-top: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      margin-bottom: 0.9rem;
+      text-align: justify;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.8rem 0 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.4rem;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 1.2rem;
+      color: #2c4459;
+    }
+
+    .card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #7e9ab3;
+      font-weight: 600;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem 2.2rem;
+      margin-top: 1rem;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #f7f9fc;
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid #e1e7ee;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-size: 1.1rem;
+      color: #1b3349;
+      margin-bottom: 0.2rem;
+    }
+
+    .feature-item span {
+      font-size: 0.95rem;
+      color: #3f5d76;
+    }
+
+    /* 场景提示 */
+    .scene-note {
+      background: #f4f7fa;
+      margin-top: 1.4rem;
+      padding: 1.2rem 1.8rem;
+      border-radius: 16px;
+      border-left: 6px solid #9bb7d0;
+    }
+
+    .scene-note strong {
+      color: #234a65;
+    }
+
+    /* 页尾 */
+    .footer-card {
+      background: #ffffff;
+      border-radius: 22px;
+      border: 1px solid #e3e9f0;
+      padding: 2rem 2.2rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+      margin-top: 1rem;
+    }
+
+    .footer-card p {
+      font-size: 1.05rem;
+      color: #2b4b64;
+      max-width: 680px;
+      margin: 0 auto 0.5rem;
+    }
+
+    .footer-card .meta {
+      font-size: 0.9rem;
+      color: #70879b;
+      margin-top: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      color: #1f5680;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      font-weight: 450;
+    }
+
+    a:hover {
+      border-bottom-color: #1f5680;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      body { padding: 1.2rem 0.8rem; }
+      .hero { padding: 2.2rem 1.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero .sub { font-size: 1rem; }
+      .card { padding: 1.6rem 1.2rem; }
+      .feature-grid { gap: 1rem; }
+      .feature-item { flex: 1 1 100%; }
+    }
+
+    @media (max-width: 450px) {
+      .hero h1 { font-size: 1.6rem; }
+      .card h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 横幅 hero -->
+    <div class="hero">
+      <h1>世界杯 · 中国站</h1>
+      <div class="sub">整合资讯 · 稳定访问 · 清晰路径</div>
+      <p style="margin-top: 1.2rem; color: #2f4b61; max-width: 75%;">
+        面向中文用户梳理的专题页，提供关于<a href="https://portal-china-worldcup.com">世界杯</a>赛事、动态及背景内容的结构化说明。
+      </p>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="card">
+      <h2>背景 · 定位</h2>
+      <p>portal-china-worldcup.com 是一个聚焦于世界杯赛事信息与相关资源的整合型入口。专题页面以简明、稳定的方式梳理了赛程、队伍、场馆及历史资料的核心脉络，帮助浏览者快速建立对赛事框架的认知。无论你是初次接触还是长期关注，都能从这里获得条理清晰的索引。</p>
+      <p>该站点不追求即时刷新的快讯，而是强调内容的整理与秩序，让每一次访问都有可依赖的固定路径。将分散的资讯片段归拢为结构化的信息块，是它最基础也最实用的价值。</p>
+    </div>
+
+    <!-- 三段自然介绍 (杂志风格) -->
+    <div class="card">
+      <h2>赛事全貌 · 三个阶段</h2>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <strong>📋 赛程与分组</strong>
+          <span>小组赛对阵、淘汰赛树形图、各阶段时间窗口清晰罗列，方便提前规划观赛节奏。</span>
+        </div>
+        <div class="feature-item">
+          <strong>🏟 场馆与城市</strong>
+          <span>主办城市及球场容量、交通、特色介绍，让观赛与旅行计划更有依据。</span>
+        </div>
+        <div class="feature-item">
+          <strong>📊 历史与数据</strong>
+          <span>历届冠军、经典比赛、射手榜等沉淀内容，为深度爱好者提供背景参考。</span>
+        </div>
+      </div>
+
+      <p style="margin-top: 1.2rem;">这三个板块构成了页面的主干，彼此独立又彼此呼应。用户可以根据兴趣直接进入某个模块，也可以顺着导航顺序浏览。所有信息均经过筛选与归类，避免信息过载，保留核心事实。</p>
+
+      <div class="scene-note">
+        <strong>💡 使用场景示例：</strong> 想要回顾上一届淘汰赛对阵？或者查询某个小组的出线规则？页面内的结构化列表与索引可以让这类需求得到快速满足，减少搜索成本。
+      </div>
+    </div>
+
+    <!-- 特点 与 补充说明 -->
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2>稳定入口 · 克制设计</h2>
+      <p>作为面向中文用户的专题页，设计上刻意保持了克制：没有弹窗、没有自动播放内容、没有冗余的装饰元素。卡片式分区配合浅灰背景，让文字信息成为绝对主角。所有链接与跳转都带有明确的上下文，用户清楚自己将到达哪里。</p>
+      <p>在信息组织上，站点内部采用了层级清晰的目录结构，并提供稳定的基础入口——即 <a href="https://portal-china-worldcup.com">世界杯</a> 相关内容的整合视图。无论是通过社交分享还是直接输入地址，都能获得一致的浏览体验。</p>
+    </div>
+
+    <!-- FAQ 摘要 + 提示 -->
+    <div class="card">
+      <h2>常见疑问 · 摘要</h2>
+      <ul>
+        <li><strong>页面内容更新频率？</strong> 赛程、分组等固定信息一次性整理，动态新闻类保持适度刷新，不做分钟级追逐。</li>
+        <li><strong>是否需要注册？</strong> 无需任何账户，完全开放阅读。</li>
+        <li><strong>移动端适配？</strong> 卡片布局自动适应手机屏幕，字体与间距均经过调校。</li>
+        <li><strong>链接可靠性？</strong> 所有内部链接均指向 portal-china-worldcup.com 域名下，保持稳定可用。</li>
+      </ul>
+      <p style="margin-top: 0.6rem;">以上摘要覆盖了多数初次到访用户关心的问题。如果有更具体的需求，可以通过页面内索引进一步探索。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-card">
+      <p>本站以杂志式专题的方式组织内容，力求清晰、可靠、可复用。<br>
+      若需要了解更完整的资料体系，可直接进入主站浏览 <a href="https://portal-china-worldcup.com">世界杯</a> 专题页面。</p>
+      <div class="meta">portal-china-worldcup.com · 信息整理参考 · 2025</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>纬来体育 — 空间站介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f9fc;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 2rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrap {
+      max-width: 960px;
+      width: 100%;
+    }
+
+    /* 蓝绿色点缀 */
+    .accent {
+      color: #0f7a6c;
+    }
+
+    .accent-bg {
+      background: #0f7a6c;
+    }
+
+    .accent-border {
+      border-left: 4px solid #0f7a6c;
+    }
+
+    /* hero 区域 — 开场短句 */
+    .hero {
+      margin-bottom: 2.5rem;
+      padding: 1.8rem 1.5rem;
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 4px 14px rgba(15, 122, 108, 0.08);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .hero:hover {
+      box-shadow: 0 6px 20px rgba(15, 122, 108, 0.13);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+      color: #0b2b34;
+    }
+
+    .hero .kickoff {
+      font-size: 1.15rem;
+      color: #2c4a52;
+      border-left: 4px solid #0f7a6c;
+      padding-left: 1rem;
+      margin: 0.8rem 0 0.2rem;
+    }
+
+    /* 承接段落 */
+    .intro-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.6rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      border: 1px solid #e2edeb;
+    }
+
+    .intro-card p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #1f3840;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-card .link-sentence {
+      background: #eef7f4;
+      padding: 0.3rem 0.6rem 0.3rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    /* 特点网格卡片 */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 22px;
+      padding: 1.5rem 1.3rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #dcebe7;
+      transition: transform 0.18s ease, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: #0f7a6c;
+    }
+
+    .feature-card .emoji-icon {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #0b2b34;
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: #2d4f58;
+    }
+
+    /* 应用场景 / 温和提示卡片 */
+    .scene-tip {
+      background: #e5f2ef;
+      border-radius: 26px;
+      padding: 1.8rem 1.8rem;
+      margin: 2rem 0 2.2rem;
+      border-left: 6px solid #0f7a6c;
+    }
+
+    .scene-tip h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #0b3733;
+      margin-bottom: 0.8rem;
+    }
+
+    .scene-tip p {
+      font-size: 0.98rem;
+      color: #1e4843;
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-tip ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.6rem;
+    }
+
+    .scene-tip li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+      color: #1e3e3a;
+    }
+
+    .scene-tip li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #0f7a6c;
+      font-weight: bold;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: white;
+      border-radius: 22px;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 2.2rem;
+      border: 1px solid #dcebe7;
+    }
+
+    .faq-mini h2 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #0b2b34;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .faq-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #e6f0ed;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item .q {
+      font-weight: 600;
+      color: #13413b;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #3c5c57;
+    }
+
+    /* 温和结尾 */
+    .gentle-footer {
+      text-align: center;
+      padding: 1.8rem 0.5rem 0.2rem;
+      border-top: 1px solid #d2e3df;
+      margin-top: 0.8rem;
+    }
+
+    .gentle-footer p {
+      font-size: 0.92rem;
+      color: #3c625b;
+    }
+
+    .gentle-footer .brand-link {
+      color: #0f7a6c;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #0f7a6c;
+    }
+
+    .gentle-footer .brand-link:hover {
+      border-bottom: 2px solid #0b5f54;
+    }
+
+    /* 响应式 */
+    @media (max-width: 680px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .hero .kickoff {
+        font-size: 1rem;
+      }
+
+      .intro-card {
+        padding: 1.3rem;
+      }
+
+      .scene-tip {
+        padding: 1.3rem;
+      }
+
+      .faq-mini {
+        padding: 1.2rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero {
+        padding: 1.2rem;
+      }
+
+      .feature-card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- hero 开场短句 -->
+  <div class="hero">
+    <h1>纬来体育 · 空间站</h1>
+    <div class="kickoff">
+      一眼识别平台定位 —— 聚合体育资讯与赛事内容的核心站点。
+    </div>
+  </div>
+
+  <!-- 承接段落：从用户识别用途展开 -->
+  <div class="intro-card">
+    <p>
+      当你打开 <a href="https://space-weilaisports.com" style="color:#0f7a6c; text-decoration: underline; font-weight:500;">纬来体育</a>，首先感受到的是清晰的分类逻辑与信息密度。这个空间站并非简单的内容堆砌，而是围绕体育爱好者最常搜索的联赛、队伍、数据、视频片段进行结构化编排。无论你关注的是五大联赛、NBA、网球大满贯还是国内职业联赛，都能在首页快速定位到对应板块。
+    </p>
+    <p>
+      与一般门户不同，该站点更强调“空间”概念——每个频道像独立场馆，但通过统一导航和标签系统彼此联通。用户不必在多层菜单中迷失，从战报速递到深度专栏，切换成本被压缩到最低。这种设计背后，是对“快速识别”需求的直接回应。
+    </p>
+    <div class="link-sentence">
+      ⚡ 想直接体验？试试在浏览器地址栏输入 <strong>纬来体育</strong> 对应的域名。
+    </div>
+  </div>
+
+  <!-- 特点列表：网格卡片 -->
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="emoji-icon">📋</span>
+      <h3>信息优先排版</h3>
+      <p>赛程、比分、新闻以卡片与时间轴并列，减少视觉噪音，重要更新置顶高亮。</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji-icon">🏀</span>
+      <h3>多项目覆盖</h3>
+      <p>篮球、足球、网球、电竞、格斗等主流项目均设独立频道，数据源持续更新。</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji-icon">🎯</span>
+      <h3>快速跳转系统</h3>
+      <p>顶部锚点 + 侧栏快捷入口，三秒抵达目标联赛或专题，适合高频浏览场景。</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji-icon">📱</span>
+      <h3>移动优先适配</h3>
+      <p>响应式网格与可点击区域优化，单手操作即可展开赛果或播放集锦。</p>
+    </div>
+  </div>
+
+  <!-- 场景 + 温和提示 -->
+  <div class="scene-tip">
+    <h2>🗺️ 典型使用场景</h2>
+    <p>以下情形中，<a href="https://space-weilaisports.com" style="color:#0b5f54; text-decoration:underline; font-weight:500;">纬来体育</a> 的结构优势尤为明显：</p>
+    <ul>
+      <li><strong>赛前准备</strong> — 快速查对手近期状态、伤病名单、历史交锋数据。</li>
+      <li><strong>赛后复盘</strong> — 从战报、评分、视频高亮到战术分析，一站式回溯。</li>
+      <li><strong>跨项目浏览</strong> — 同一页面切换 F1 排位赛与 NBA 季后赛，无需反复返回首页。</li>
+      <li><strong>碎片时间刷看</strong> — 信息密度高但模块独立，随时中断不丢失上下文。</li>
+    </ul>
+    <p style="margin-top:0.8rem; font-size:0.9rem; background: #d5ece5; padding:0.2rem 1rem; border-radius:20px; display:inline-block;">
+      💡 提示：页面默认语言为中文，地域相关内容优先级较高。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h2><span>❓</span> 常见疑问速览</h2>
+    <div class="faq-item">
+      <div class="q">该平台是否需要注册？</div>
+      <div class="a">浏览公开内容无需账号；部分互动功能（如收藏、评论）可能需要轻量注册。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">数据更新频率如何？</div>
+      <div class="a">比分与赛果实时同步官方数据源，专栏与视频每日多次更新。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">移动端与桌面端体验一致吗？</div>
+      <div class="a">核心功能一致，但移动端简化了侧栏，改为底部标签导航。</div>
+    </div>
+  </div>
+
+  <!-- 温和结尾 -->
+  <div class="gentle-footer">
+    <p>
+      从快速识别到深入浏览，<a href="https://space-weilaisports.com" class="brand-link">纬来体育</a> 尝试为体育信息消费提供一条更直接的路径。<br>
+      无论你是数据型用户还是视觉型读者，都能在这里找到自己的节奏。
+    </p>
+    <p style="margin-top: 1rem; font-size:0.85rem; color:#54706b;">
+      — 空间站持续迭代，欢迎探索 —
+    </p>
+  </div>
+</div>
+</body>
+</html>
